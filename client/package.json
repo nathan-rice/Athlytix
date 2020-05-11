@@ -61,7 +61,7 @@
     "typescript": "^2.5.0",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^2.6.1",
-    "webpack-bundle-analyzer": "^2.9.0",
+    "webpack-bundle-analyzer": "^3.7.0",
     "webpack-closure-compiler": "^2.1.5"
   },
   "dependencies": {
