@@ -1,0 +1,15 @@
+---
+- name: Allocate swapfile
+  command: fallocate -l 1G /.swapfile creates=/.swapfile
+  tags:
+    - initial
+
+- name: Change permissions of swapfile
+  command: chmod 600 /.swapfile
+  tags:
+    - initial
+
+- name: Make swapfile
+  command: mkswap /.swapfile
+  tags:
+    - initial

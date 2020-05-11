@@ -1,0 +1,38 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.padded-tabs div.tab-pane {
+    padding: 10px;
+}
+
+div.jumbotron {
+    background: url('/static/img/banner.jpg') top center;
+}
+
+@media (min-width: 1200px) {
+    div.jumbotron {
+        background-size: 100% auto;
+    }
+}
+
+@media (max-width: 1199px) {
+    div.jumbotron {
+        background-size: auto 100%;
+    }
+}
+
+.jumbotron-text {
+    color: white !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,1)
+}
+
+.jumbotron-text strong {
+    color: red !important;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}

@@ -1,0 +1,9 @@
+[Unit]
+Description=uWSGI instance to serve {{ app_name }}
+
+[Service]
+ExecStartPre=-/bin/bash -c 'mkdir -p /run/uwsgi; chown www-data /run/uwsgi'
+ExecStart=/bin/bash -c 'cd {{ webapps_dir }}/{{ app_name }}/server/; source {{ webapps_dir }}/virtual_environments/{{ app_name }}/bin/activate; uwsgi --uid www-data --gid www-data --lazy --ini {{ webapps_dir }}/{{ app_name}}/server/{{ app_name }}.ini'
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+---
+- name: Restart Athlytix
+  service:
+    name: athlytix
+    state: restarted
+    enabled: yes

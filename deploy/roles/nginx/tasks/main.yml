@@ -1,0 +1,83 @@
+---
+- name: Install Nginx
+  apt:
+    name: nginx
+    update_cache: yes
+    cache_valid_time: 3600
+  tags:
+    - initial
+    - nginx
+
+- name: Open port 443
+  iptables:
+    to_ports: 443
+    protocol: tcp
+    policy: ACCEPT
+    chain: INPUT
+  tags:
+    - initial
+    - nginx
+
+- name: Copy Nginx configuration for Athlytix
+  template:
+    src: athlytix
+    dest: /etc/nginx/sites-enabled/athlytix
+  tags:
+    - nginx
+
+- name: Remove default config from sites-enabled
+  file:
+    state: absent
+    path: /etc/nginx/sites-enabled/default
+  tags:
+    - initial
+    - nginx
+
+- name: Install Certbot requirements
+  apt:
+    name: software-properties-common
+    update_cache: yes
+    cache_valid_time: 3600
+  tags:
+    - initial
+    - certbot
+    - nginx
+
+- name: Add Certbot ppa
+  command: add-apt-repository ppa:certbot/certbot
+  tags:
+    - initial
+    - certbot
+    - nginx
+
+- name: Install Certbot
+  apt:
+    name: python-certbot-nginx
+    update_cache: yes
+  tags:
+    - initial
+    - certbot
+    - nginx
+
+- name: Run Certbot
+  command: certbot --nginx -d www.athlytix.org -m nathan.alexander.rice@gmail.com --agree-tos -n
+  tags:
+    - initial
+    - certbot
+    - nginx
+
+- name: Add Certbot certificate renewal to cron
+  cron:
+    name: "renew certbot certificate"
+    month: "*/2"
+    day: 1
+    job: certbot renew
+  tags:
+    - initial
+    - certbot
+    - nginx
+
+- name: Restart HTTP service
+  command: /etc/init.d/nginx restart
+  tags:
+    - nginx

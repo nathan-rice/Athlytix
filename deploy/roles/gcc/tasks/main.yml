@@ -1,0 +1,6 @@
+---
+- name: Install GCC
+  apt:
+    name: gcc
+  tags:
+    - initial

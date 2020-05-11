@@ -1,0 +1,21 @@
+---
+- name: Install curl
+  apt:
+    name: curl
+    update_cache: yes
+    cache_valid_time: 3600
+  tags:
+    - initial
+
+- name: Update APT sources for new NodeJS/NPM
+  shell: curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+  tags:
+    - initial
+
+- name: Install NodeJS/NPM
+  apt:
+    name: nodejs
+    update_cache: yes
+    cache_valid_time: 3600
+  tags:
+    - initial

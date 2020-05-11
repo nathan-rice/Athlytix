@@ -1,0 +1,14 @@
+{% extends "email/base-email.html" %}
+{% block body %}
+<p>An account has been created for you by {{ creator.first_name }} {{ creator.last_name }}.</p>
+<p>
+    You'll need to <a href="{{ reset_password_link }}">set your password</a> before you can log in.  If this link
+    expires, you can always create a new one <a href="http://{{ config["SERVER_URL"] }}/user/forgot-password">here</a>.
+</p>
+<p>
+    Your first stop once you've changed your password should be the to the
+    <a href="http://{{ config["SERVER_URL"] }}/pages/getting-started.html">getting started</a> page, to learn about all
+    of the great features provided by Athlytix.  If you have any questions or comments, contact
+    <a href="mailto:{{ config["SUPPORT_EMAIL_ADDRESS"] }}?subject=%5Bsupport%5D">support</a> and we'll be glad to help.
+</p>
+{% endblock %}

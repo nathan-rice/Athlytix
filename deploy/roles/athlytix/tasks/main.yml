@@ -1,0 +1,78 @@
+---
+- name: Git pull project
+  git:
+    repo: "{{ repo_url }}"
+    dest: "{{ webapps_dir }}/{{ app_name }}"
+    version: master
+  tags:
+    - build
+    - rebuild
+    - pull
+
+- name: Install library requirements
+  pip:
+    requirements: "{{ webapps_dir }}/{{ app_name }}/server/requirements.txt"
+    virtualenv: "{{ webapps_dir }}/virtual_environments/{{ app_name }}"
+  tags:
+    - build
+
+- name: Install broken library requirements (requires packages without specifying install_requires in setup.py)
+  pip:
+    requirements: "{{ webapps_dir }}/{{ app_name }}/server/requirements2.txt"
+    virtualenv: "{{ webapps_dir }}/virtual_environments/{{ app_name }}"
+  tags:
+    - build
+
+# Cannot build client bundle on Digital Ocean small droplet without enabling swapping, insufficient RAM
+- block:
+  - name: Enable swapping
+    command: swapon /.swapfile
+    tags:
+      - build
+      - rebuild
+  - name: Install JS dependencies
+    command: npm install chdir="{{ webapps_dir }}/{{ app_name }}/client/"
+    tags:
+      - build
+  - name: Build client bundle
+    command: npm run-script build-production chdir="{{ webapps_dir }}/{{ app_name }}/client/"
+    tags:
+     - build
+     - rebuild
+  - name: Install bookmarklet JS dependencies
+    command: npm install chdir="{{ webapps_dir }}/{{ app_name }}/bookmarklet/"
+    tags:
+      - build
+  - name: Build bookmarklet bundle
+    command: npm run-script build-production chdir="{{ webapps_dir }}/{{ app_name }}/bookmarklet/"
+    tags:
+     - build
+     - rebuild
+  always:
+    - name: Turn off swapping
+      command: swapoff /.swapfile
+      tags:
+        - build
+        - rebuild
+
+- name: Load database schema
+  shell: "psql -h localhost -U athlytix athlytix < {{ webapps_dir }}/{{ app_name }}/postgres/dumps/schema.sql"
+  when: load_db_dump == "sparse"
+  tags:
+    - builddb
+    - update_schema
+    - initial
+
+- name: Load database data
+  shell: "psql -h localhost -U athlytix athlytix < {{ webapps_dir }}/{{ app_name }}/postgres/dumps/data.sql"
+  when: load_db_dump == "sparse"
+  tags:
+    - builddb
+    - initial
+
+- name: Load full database dump
+  shell: "psql -h localhost -U athlytix athlytix < {{ webapps_dir }}/{{ app_name }}/postgres/dumps/full.sql"
+  when: load_db_dump == "full"
+  tags:
+    - builddb
+    - initial

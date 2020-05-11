@@ -1,0 +1,21 @@
+---
+- name: Install Athlytix, including all necessary services and dependencies
+  hosts: webservers
+  user: root
+  vars:
+    app_name: athlytix
+    repo_url: ...
+    repo_remote: origin
+    repo_version: master
+    webapps_dir: /var/www
+    app_db_pass: ...
+    load_db_dump: "sparse"
+  roles:
+    - swap
+    - gcc
+    - python
+    - postgres
+    - node
+    - nginx
+    - athlytix
+    - uwsgi

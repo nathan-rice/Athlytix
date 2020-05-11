@@ -1,0 +1,602 @@
+body {
+    padding-top: 50px;
+}
+
+@media (max-width: 768px) {
+    #navbar-brand-text {
+        display: none;
+    }
+}
+
+#header-active-user-select {
+    float: left;
+    height: 50px;
+    min-width: 200px;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+#header-active-user-select > div {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+#header-account-picture {
+    padding: 5px 0 5px 5px;
+}
+
+nav > div.container {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.header-active-user-select-container {
+
+}
+
+.header-active-user-select-container > div {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+div.calendar-banner {
+    margin-top: 5px
+}
+
+div.calendar-banner > div {
+    background-color: white;
+    text-align: center;
+}
+
+div.calendar-banner div.Select {
+    display: inline-block;
+    min-width: 150px;
+    text-align: left;
+}
+
+div.calendar-banner-view label.control-label {
+    vertical-align: top;
+    margin-top: 9px;
+}
+
+div.calendar-month {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+div.calendar-day {
+    flex-basis: 14%;
+    flex-grow: 1;
+    min-width: 155px;
+    margin: 1px;
+    height: 100%;
+}
+
+div.calendar-day-header {
+    background: #eaeaea;
+    border: solid 1px rgb(204, 204, 204);
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+div.calendar-day-header {
+    font-size: 20px;
+}
+
+div.calendar-month div.calendar-day-header {
+    font-size: 15px;
+}
+
+div.calendar-day-selected > div.calendar-day-header {
+    background: rgb(96, 96, 96);
+    border-color: rgb(32, 32, 32);
+}
+
+span.calendar-day-header-menu {
+    margin-left: auto;
+}
+
+span.calendar-day-header-date {
+    margin-right: auto;
+    margin-left: 5px
+}
+
+div.calendar-month span.calendar-day-header-menu {
+    margin-right: 22px;
+    margin-top: -2px;
+}
+
+span.calendar-day-header-menu {
+    margin-right: 27px;
+    margin-top: -2px;
+}
+
+div.calendar-month div.calendar-day-body {
+    overflow-y: auto;
+    min-height: 150px;
+    padding: 5px;
+    font-size: 11px;
+    max-height: 240px;
+}
+
+div.calendar-month div.calendar-day-body::-webkit-scrollbar {
+    width: 5px;
+    background-color: white;
+}
+
+div.calendar-month div.calendar-day-body::-webkit-scrollbar-thumb {
+    background-color: #555;
+}
+
+div.calendar-month div.calendar-day-body::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+div.calendar-day-selected div.calendar-day-header {
+    color: white;
+}
+
+div.calendar-day-selected > div.calendar-day-body {
+}
+
+div.calendar-day-stub {
+    opacity: 0.4;
+}
+
+@media (max-width: 1080px) {
+    div.calendar-day-stub {
+        display: none;
+    }
+}
+
+div.data-view {
+    overflow-x: hidden;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+div.page-parent {
+    padding: 5px;
+}
+
+div.plot-control-widget {
+    margin-bottom: 15px;
+}
+
+div.calendar-day-dropdown {
+    position: absolute;
+}
+
+div.calendar-day-dropdown {
+    visibility: hidden;
+}
+
+div.calendar-day-selected div.calendar-day-dropdown {
+    visibility: visible;
+}
+
+div.calendar-day-selected div.calendar-day-dropdown > div > a {
+    color: white;
+}
+
+div.calendar-month div.calendar-day-selected, div.calendar-day:hover:not(.calendar-day-stub) div.add-item-instruction {
+    visibility: visible;
+}
+
+div.calendar-day-selected, div.calendar-day:hover:not(.calendar-day-stub) div.calendar-day-dropdown {
+    visibility: visible;
+}
+
+/*div.calendar-month div.calendar-day-dropdown {*/
+    /*visibility: hidden;*/
+    /*margin-top: 2px;*/
+    /*font-size: 12px;*/
+    /*text-align: center;*/
+/*}*/
+
+div.calendar-day-body > div.tree-view {
+    overflow-y: visible;
+}
+
+div.tree-view_children {
+    margin-left: 9px;
+}
+
+div.tree-view_arrow {
+    margin-right: 3px !important;
+}
+
+.calendar-day-tree-view-header {
+    font-weight: bold;
+}
+
+div.calendar-day-list-item {
+    display: flex;
+}
+
+div.calendar-day-list-item:hover {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+div.calendar-day-list-item > span:first-child {
+    flex-grow: 1;
+}
+
+div.calendar-day-body > div {
+    padding: 3px;
+    min-width: 300px;
+    flex-basis: 33%;
+    flex-grow: 1;
+    flex-wrap: wrap;
+}
+
+div.calendar-month div.calendar-day-body > div {
+    min-width: 100px;
+    flex-grow: 0;
+    padding: 0px;
+}
+
+div.calendar-day-body {
+    font-size: 15px;
+    overflow-y: auto !important;
+    flex-direction: column;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+div.calendar-month .calendar-day-list-item-right {
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    white-space: nowrap;
+}
+
+div.calendar-day-list-item-right > div {
+    display: inline-block;
+}
+
+div.calendar-month .calendar-day-list-item-right > div {
+    max-width: 75px;
+    height: 12px;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    div.calendar-day-list-item-right span.glyphicon {
+        visibility: visible;
+    }
+}
+
+.calendar-day-list-item:hover span.glyphicon {
+    visibility: visible;
+}
+
+.calendar-day-list-item span.glyphicon {
+    visibility: hidden;
+    margin-left: 5px;
+}
+
+.calendar-day-list-item span:first-child {
+    padding-left: 3px;
+    text-indent: -3px;
+}
+
+.modal-footer button.btn-danger {
+    float: left;
+}
+
+.modal-footer button.btn-default {
+    float: right;
+}
+
+.input-group-label {
+    font-size: 10pt;
+    color: rgba(128, 128, 128, 128);
+}
+
+div.plot-container > div.row {
+    margin: 0;
+}
+
+div.plot-container > div.row > div {
+    padding: 0;
+}
+
+div.plot-control-widget form {
+    text-align: center;
+}
+
+.goal-alert-button button {
+    margin-top: -4px; /* Fix for bootstrap button shifting due to padding */
+}
+
+.plot-div {
+    margin-bottom: 8px;
+}
+
+#achievement-spinner {
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.mini-header {
+    margin-top: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+#application-root div.alert {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#endurance-banner-search-button {
+    margin-top: 25px;
+}
+
+@media (min-width: 768px) {
+    div.banner-selector > label.control-label {
+        padding-top: 12px;
+    }
+
+    div.banner-selector > div {
+        padding-top: 5px;
+    }
+
+    div.calendar-week div.calendar-day-body {
+        max-height: 350px;
+    }
+
+}
+
+.social-icon-small {
+    width: 32px;
+    height: 32px;
+    margin: 2px;
+}
+
+tr.vertical-center > td {
+    vertical-align: middle !important;
+}
+
+span.inline-header {
+    font-size: 36px;
+}
+
+div.profile-social-buttons {
+    float: right !important;
+    margin-top: 16px;
+}
+
+.page-header-small {
+    padding-bottom: 5px;
+    margin: 10px 0 10px;
+    border-bottom: 1px solid #eee;
+}
+
+div.Select.is_open {
+    z-index: 1000 !important;
+}
+
+div.Select-menu-outer {
+    z-index: 1000;
+}
+
+@media (min-width: 768px) {
+    div.form-modal, div.media-modal {
+        min-width: 700px !important;
+    }
+}
+
+div.media-modal .modal-body {
+    text-align: center;
+}
+
+img.nav-logo {
+    width: 32px;
+    height: 32px;
+    margin-top: -8px;
+    margin-right: 10px;
+    display: inline !important;
+}
+
+div.calendar-month button.add-button {
+    font-size: 11.25px !important;
+    padding: 2px 5px 3px 5px !important;
+    border-radius: 0px !important;
+    outline: 0 !important;
+}
+
+button.add-button {
+    font-size: 16.25px !important;
+    padding: 2px 5px 3px 5px !important;
+    border-radius: 0px !important;
+    outline: 0 !important;
+}
+
+div.tab-content {
+    margin-top: 15px;
+}
+
+div.calendar-day-select, div.calendar-day:hover:not(.calendar-day-stub) div.add-item-instruction {
+    display: block;
+}
+
+div.add-item-instruction {
+    display: none;
+}
+
+.program-editor-workout-header {
+    display: inline-block;
+}
+
+div.program-editor-workout-set form {
+    overflow-x: hidden;
+}
+
+.program-editor-treeview-child {
+    margin-top: 10px
+}
+
+div.program-editor-workout-set-exercise {
+    position: absolute;
+}
+
+div.program-editor-workout-set-details {
+    position: relative;
+}
+
+div.program-editor-workout-menu button.btn-danger {
+    margin-right: 30px;
+}
+
+div.workout-form-set div.form-group {
+    padding-right: 10px !important;
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    form.form-inline label.control-label {
+        margin-right: 10px;
+        margin-left: 20px;
+    }
+
+    div.program-editor-treeview-child textarea {
+        width: 550px !important;
+    }
+
+    input.program-editor-workout-name.form-control {
+        width: 200px;
+    }
+
+    div.program-editor-workout-set-exercise {
+        position: absolute;
+        width: 200px;
+        margin-left: 88px;
+    }
+
+    div.program-editor-workout-set-details {
+        margin-left: 290px;
+    }
+
+    div.program-editor-workout-set-details input.form-control {
+        width: 86px;
+    }
+
+    span.program-editor-workout-day input.form-control {
+        width: 86px;
+        margin-right: 82px;
+    }
+
+    span.program-editor-workout-day label.control-label {
+        margin-left: 30px;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1199px) {
+    form.form-inline label.control-label {
+        margin-right: 10px;
+        margin-left: 20px;
+    }
+
+    input.program-editor-workout-name.form-control {
+        width: 300px;
+    }
+
+    div.program-editor-treeview-child textarea {
+        width: 775px !important;
+    }
+
+    div.program-editor-workout-set-exercise {
+        position: absolute;
+        width: 300px;
+        margin-left: 88px;
+    }
+
+    div.program-editor-workout-set-details {
+        margin-left: 390px;
+    }
+
+    div.program-editor-workout-set-details input.form-control {
+        width: 150px;
+    }
+
+    span.program-editor-workout-day input.form-control {
+        width: 150px;
+        margin-right: 146px;
+    }
+
+    span.program-editor-workout-day label.control-label {
+        margin-left: 30px;
+    }
+}
+
+@media (min-width: 1200px) {
+    form.form-inline label.control-label {
+        margin-right: 10px;
+        margin-left: 20px;
+    }
+
+    input.program-editor-workout-name.form-control {
+        width: 350px;
+    }
+
+    div.program-editor-treeview-child textarea {
+        width: 975px !important;
+    }
+
+    div.program-editor-workout-set-exercise {
+        position: absolute;
+        width: 350px;
+        margin-left: 88px;
+    }
+
+    div.program-editor-workout-set-details {
+        margin-left: 430px;
+    }
+
+    div.program-editor-workout-set-details input.form-control {
+        width: 200px;
+    }
+
+    span.program-editor-workout-day input.form-control {
+        width: 200px;
+        margin-right: 225px;
+    }
+
+    span.program-editor-workout-day label.control-label {
+        margin-left: 50px;
+    }
+
+    div.program-editor-workout-set form.form-inline label.control-label {
+        margin-left: 50px;
+    }
+}
+
+div.program-editor-workout-menu {
+    border-bottom: 1px solid #eee;
+    margin-top: 15px;
+    padding-bottom: 9px;
+    margin-bottom: 15px;
+}
+
+span.program-editor-workout-menu-title {
+    font-size: 24px;
+}
+
+div.day-section {
+    display: flex;
+    flex-basis: 100%
+}
+
+.progress
+
+/*div.plot-div {*/
+/*width: 95%;*/
+/*}*/

@@ -1,0 +1,2 @@
+SERVER_URL = "localhost:5000"
+PROPAGATE_EXCEPTIONS = True

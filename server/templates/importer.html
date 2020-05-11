@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block content %}
+    <h3 class="page-header">About the Importer</h3>
+    <p>The Athlytix Importer allows you to easily import nutrition data for individual foods or even complete recipes
+        directly into your Athlytix log. Currently supported sites include:</p>
+    <ul className="list-inline">
+        <li><a href="http://www.calorieking.com/foods/" target="_blank">Calorie King</a></li>
+        <li><a href="http://www.fatsecret.com/calories-nutrition/" target="_blank">Fat Secret</a></li>
+        <li><a href="http://nutritiondata.self.com/" target="_blank">Self NutritionData</a></li>
+        <li><a href="http://allrecipes.com/" target="_blank">AllRecipes</a></li>
+        <li><a href="http://www.food.com/" target="_blank">Food.com</a></li>
+        <li><a href="http://www.myrecipes.com/" target="_blank">MyRecipes</a></li>
+        <li><a href="http://www.cookinglight.com/" target="_blank">CookingLight</a></li>
+        <li><a href="http://www.health.com/" target="_blank">Health.com</a></li>
+        <li><a href="http://www.epicurious.com/" target="_blank">Epicurious</a></li>
+    </ul>
+    Note that many recipes on Epicurious lack nutrition information.
+    <h3 class="page-header">Installation Instructions</h3>
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#1" data-toggle="tab">Chrome</a>
+        </li>
+        <li>
+            <a href="#2" data-toggle="tab">Firefox</a>
+        </li>
+        <li>
+            <a href="#3" data-toggle="tab">Safari</a>
+        </li>
+    </ul>
+
+    <div class="tab-content padded-tabs">
+        <div class="tab-pane active" id="1">
+            <dl>
+                <dt>Step 1: Make sure the bookmark toolbar is enabled</dt>
+                <dd>In order to import data from recipe websites you will need to click a link on the bookmark bar. If
+                    it is currently hidden, you will need to display it by following the directions provided
+                    <a href="https://support.google.com/chrome/answer/95745?hl=en" target="_blank">here</a>.
+                </dd>
+            </dl>
+            <dl>
+                <dt>Step 2: Copy the importer URL by clicking this button:
+                    <button class="copy-button btn btn-small" data-toggle="tooltip" title="Copied!"><span
+                            class="glyphicon glyphicon-copy"></span></button>
+                </dt>
+            </dl>
+            <dl>
+                <dt>Step 3: Right click on the bookmark toolbar, and select <strong>Add page...</strong></dt>
+            </dl>
+            <dl>
+                <dt>Step 4: Enter <em>Athlytix Importer</em> in the <em>Name</em> field</dt>
+            </dl>
+            <dl>
+                <dt>Step 5: Paste the code snippet into the <em>URL</em> field</dt>
+            </dl>
+            <dl>
+                <dt>Step 6: Click the <em>Save</em> button</dt>
+            </dl>
+            <dl>
+                <dt>Step 7: Drag the <em>Athlytix Importer</em> on to the bookmark toolbar if it isn't there
+                    already
+                </dt>
+                <dd>Do this by clicking on the <strong>&raquo;</strong> button to the far right of the bookmark toolbar,
+                    locating the <strong>Athlytix Importer</strong> in the drop-down list, and dragging it to a
+                    convenient location on the toolbar.
+                </dd>
+            </dl>
+        </div>
+        <div class="tab-pane" id="2">
+            <dl>
+                <dt>Step 1: Make sure the bookmark toolbar is enabled</dt>
+                <dd>In order to import data from recipe websites you will need to click a link on the bookmark bar. If
+                    it is currently hidden, you will need to display it by following the directions provided
+                    <a href="https://support.mozilla.org/en-US/kb/bookmarks-toolbar-display-favorite-websites"
+                       target="_blank">here</a>.
+                </dd>
+            </dl>
+            <dl>
+                <dt>Step 2: Copy the importer URL by clicking this button:
+                    <button class="copy-button btn btn-small" data-toggle="tooltip" title="Copied!"><span
+                            class="glyphicon glyphicon-copy"></span></button>
+                </dt>
+            </dl>
+            <dl>
+                <dt>Step 3: Right click on the bookmark toolbar, and select <em>New Bookmark...</em></dt>
+            </dl>
+            <dl>
+                <dt>Step 4: Enter <em>Athlytix Importer</em> in the <em>Name</em> field</dt>
+            </dl>
+            <dl>
+                <dt>Step 5: Paste the code snippet into the <em>Location</em> field</dt>
+            </dl>
+            <dl>
+                <dt>Step 6: Click the <em>Add</em> button</dt>
+            </dl>
+            <dl>
+                <dt>Step 7: Drag the <em>Athlytix Importer</em> on to the bookmark toolbar if it isn't there
+                    already
+                </dt>
+            </dl>
+            </dl>
+        </div>
+        <div class="tab-pane" id="3">
+            <p>Coming soon...</p>
+        </div>
+    </div>
+    <input style="opacity: 0" class="form-control" id="bookmarklet-url"
+           value="javascript:%21function%28%29%7Btry%7Bwindow.athlytixAddData%28%29%7Dcatch%28t%29%7Bs%3Ddocument.createElement%28%22script%22%29%2Cs.type%3D%22text%2Fjavascript%22%2Cs.src%3D%22http%3A%2F%2F{{ config["SERVER_URL"] | urlencode }}%2Fstatic%2Fjs%2Fbookmarklet.js%22%2Cdocument.body.appendChild%28s%29%7D%7D%28%29%3B"
+           readonly>
+{% endblock %}
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('.copy-button').tooltip({trigger: "click"});
+            $('.copy-button').click(function () {
+                var input = document.getElementById('bookmarklet-url');
+                input.select();
+                try {
+                    document.execCommand('copy');
+                } catch (err) {
+                }
+            });
+        })
+    </script>
+{% endblock %}

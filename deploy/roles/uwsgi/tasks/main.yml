@@ -1,0 +1,25 @@
+---
+- name: Copy uWSGI config
+  template:
+    src: uwsgi.service
+    dest: /etc/systemd/system/uwsgi.service
+  tags:
+    - uwsgi
+
+- name: Creates uWSGI log directory
+  file:
+    path: /var/log/uwsgi
+    state: directory
+    owner: www-data
+  tags:
+    - uwsgi
+
+- name: Restart uWSGI
+  command: systemctl restart uwsgi
+  tags:
+    - uwsgi
+
+- name: Set uWSGI to start at boot
+  command: systemctl enable uwsgi
+  tags:
+    - uwsgi

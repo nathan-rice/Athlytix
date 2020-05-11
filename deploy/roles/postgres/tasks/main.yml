@@ -1,0 +1,54 @@
+---
+- name: Install Postgres
+  apt:
+    name: postgresql-9.6
+    update_cache: yes
+    cache_valid_time: 3600
+  tags:
+    - initial
+    - postgres
+
+- name: Install psycopg2
+  apt:
+    name: python3-psycopg2
+  tags:
+    - initial
+    - postgres
+
+- name: Install Postgres contrib
+  apt:
+    name: postgresql-contrib-9.6
+    update_cache: yes
+    cache_valid_time: 3600
+  tags:
+    - initial
+    - postgres
+
+- name: Create athlytix user
+  become: true
+  become_user: 'postgres'
+  postgresql_user:
+    name: "{{ app_name }}"
+    password: "{{ app_db_pass }}"
+  tags:
+    - initial
+    - postgres
+
+- name: Create the database
+  become: true
+  become_user: 'postgres'
+  postgresql_db:
+    name: "{{ app_name }}"
+    owner: "{{ app_name }}"
+  tags:
+    - initial
+    - postgres
+
+- name: Add pgpass file
+  template:
+    src: pgpass
+    dest: /root/.pgpass
+    mode: 0600
+  tags:
+    - initial
+    - postgres

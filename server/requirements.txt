@@ -1,0 +1,17 @@
+passlib
+flask
+sqlalchemy
+flask_sqlalchemy
+flask_mail
+flask_login
+flask_wtf
+flask_profiler
+flask_cors
+pycrypto
+numpy
+scipy
+pandas
+uwsgi
+psycopg2
+stripe
+

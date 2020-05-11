@@ -1,0 +1,27 @@
+---
+- name: Install Python 3.6
+  apt:
+    name: python3.6
+    update_cache: yes
+    cache_valid_time: 3600
+  tags:
+    - initial
+
+- name: Install Python 3.6 development files
+  apt:
+    name: python3.6-dev
+    update_cache: yes
+    cache_valid_time: 3600
+  tags:
+    - initial
+
+- name: Install pip3.6
+  shell: curl -sL https://bootstrap.pypa.io/get-pip.py | python3.6 -
+  tags:
+    - initial
+
+- name: Install virtualenv
+  pip:
+    name: virtualenv
+  tags:
+    - initial
